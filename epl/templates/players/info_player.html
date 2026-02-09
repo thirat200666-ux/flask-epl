@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-3">
+  <h2>{{ title }}</h2>
+  <hr>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card shadow-sm">
+        <div class="card-body text-center p-1">
+            {% if player.image_url %}
+                <img src="{{ player.image_url }}" class="img-fluid rounded" alt="{{ player.name }}">
+            {% else %}
+                <div class="py-5 text-muted">No Image</div>
+            {% endif %}
+        </div>
+        <div class="card-footer text-center text-success bg-white">
+            Player Photo
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <div class="card shadow-sm">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+            <span class="h4 mb-0">Player Name</span>
+            <span class="h4 text-muted mb-0">{{ player.name }}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+            <span class="h4 mb-0">Position</span>
+            <span class="h4 text-muted mb-0">{{ player.position }}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+            <span class="h4 mb-0">Nationality</span>
+            <span class="h4 text-muted mb-0">{{ player.nationality }}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+            <span class="h4 mb-0">Goals</span>
+            <span class="h4 text-muted mb-0">{{ player.goals }}</span>
+          </li>
+        </ul>
+        <div class="card-footer bg-white d-flex justify-content-between p-3">
+             <a href="{{ url_for('all_players') }}" class="btn btn-outline-success">
+                <i class="bi bi-house-door-fill"></i> Back to Player Page
+             </a>
+             <a href="{{ url_for('update_player', id=player.id) }}" class="btn btn-outline-success">
+                <i class="bi bi-pencil-fill"></i> Edit Player
+             </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

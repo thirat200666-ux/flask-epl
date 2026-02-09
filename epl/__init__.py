@@ -1,10 +1,12 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///epl.sqlite'
+app.secret_key = b'hgyuftrdfikkjhtdfyui'
 
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
-# ❌ คอมเมนต์ไว้ก่อน
-# from epl import routes, models
+from epl import routes, models
