@@ -4,7 +4,7 @@ from sqlalchemy import Integer, String, ForeignKey
 from typing import List
 
 class Club(db.Model):
-  __tablename__ = 'clubs'
+  __tablename__ = 'club'
   id: Mapped[int] = mapped_column(Integer, primary_key=True)
   name: Mapped[str] = mapped_column(String(50), nullable=False, unique=True)
   stadium: Mapped[str] = mapped_column(String(50), nullable=False, unique=True)
@@ -17,7 +17,7 @@ class Club(db.Model):
     return f'<Club: {self.name}>'
   
 class Player(db.Model):
-  __tablename__ = 'players'
+  __tablename__ = 'player'
   id: Mapped[int] = mapped_column(Integer, primary_key=True)
   name: Mapped[str] = mapped_column(String(50), nullable=False, unique=True)
   position: Mapped[str] = mapped_column(String(20), nullable=False)
