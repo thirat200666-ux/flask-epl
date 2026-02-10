@@ -20,12 +20,17 @@ def new_player():
     position = request.form['position']
     nationality = request.form['nationality']
     goal = int(request.form['goals'])
+    
+    
+    clean_sheets = int(request.form['clean_sheets'])
+    
     squad_no = int(request.form['squad_no'])
     img = request.form['img']
     club_id = int(request.form['club_id'])
 
     player = Player(name=name, position=position, nationality=nationality,
-                    goal=goal, squad_no=squad_no, img=img, club_id=club_id)
+                    goal=goal, clean_sheets=clean_sheets, squad_no=squad_no, 
+                    img=img, club_id=club_id)
     
     db.session.add(player)
     db.session.commit()
@@ -62,6 +67,10 @@ def update_player(id):
     position = request.form['position']
     nationality = request.form['nationality']
     goal = int(request.form['goals'])
+    
+   
+    clean_sheets = int(request.form['clean_sheets'])
+    
     squad_no = int(request.form['squad_no'])
     img = request.form['img']
     club_id = int(request.form['club_id'])
@@ -70,6 +79,10 @@ def update_player(id):
     player.position = position
     player.nationality = nationality
     player.goal = goal
+    
+    
+    player.clean_sheets = clean_sheets
+    
     player.squad_no = squad_no
     player.img = img
     player.club_id = club_id
@@ -78,7 +91,9 @@ def update_player(id):
     db.session.commit()
 
     flash('update player successfully', 'success')
-    return redirect(url_for('players.index'))
+    
+   
+    return redirect(url_for('players.info_player', id=id))
   
   return render_template('players/update_player.html',
                          title='Update Player Page',
