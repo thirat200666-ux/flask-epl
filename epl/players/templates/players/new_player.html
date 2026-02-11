@@ -13,6 +13,7 @@
         <label for="name" class="form-label">Player Name</label>
         <input name="name" type="text" class="form-control" id="name" required>
       </div>
+      
       <div class="mb-3">
         <label for="position" class="form-label">Select Position</label>
         <select name="position" class="form-select" aria-label="Default select example">
@@ -22,6 +23,7 @@
           <option value="Forward">Forward</option>
         </select>
       </div>
+      
       <div class="mb-3">
         <label for="nationality" class="form-label">Nationality</label>
         <input name="nationality" type="text" class="form-control" id="nationality" required>
@@ -33,8 +35,8 @@
       </div>
 
       <div class="mb-3">
-        <label for="clean_sheets" class="form-label">Clean Sheets</label>
-        <input name="clean_sheets" type="number" class="form-control" id="clean_sheets" required>
+        <label for="clean_sheets" class="form-label">Clean Sheets (Only for Goalkeeper)</label>
+        <input name="clean_sheets" type="number" class="form-control" id="clean_sheets" placeholder="Leave blank if not Goalkeeper">
       </div>
 
       <div class="mb-3">
@@ -46,15 +48,16 @@
         <label for="img" class="form-label">Image URL</label>
         <input name="img" type="text" class="form-control" id="img" required>
       </div>
+      
       <div class="mb-3">
-        <label for="position" class="form-label">Select Club</label>
+        <label for="club_id" class="form-label">Select Club</label>
         <select name="club_id" class="form-select" aria-label="Default select example">
           {% for club in clubs %}
             <option value="{{club.id}}">{{club.name}}</option>
           {% endfor %}
-          
         </select>
       </div>
+      
       <button type="submit" class="btn btn-outline-success">
         <i class="bi bi-folder-plus"></i>
         New Player

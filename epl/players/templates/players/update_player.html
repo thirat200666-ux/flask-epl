@@ -35,12 +35,14 @@
       </div>
 
       <div class="mb-3">
-        <label for="clean_sheets" class="form-label">Clean Sheets</label>
-        <input value="{{player.clean_sheets}}" name="clean_sheets" type="number" class="form-control" id="clean_sheets" required>
+        <label for="clean_sheets" class="form-label">Clean Sheets (Only for Goalkeeper)</label>
+        <input value="{{ player.clean_sheets if player.clean_sheets is not none else '' }}" 
+               name="clean_sheets" type="number" class="form-control" id="clean_sheets" 
+               placeholder="Leave blank if not Goalkeeper">
       </div>
 
       <div class="mb-3">
-        <label for="squad_no" class="form-label">Squad No</label>
+        <label for="squad_no" class="form-label">Squad Number</label>
         <input value="{{player.squad_no}}" name="squad_no" type="number" class="form-control" id="squad_no" required>
       </div>
       

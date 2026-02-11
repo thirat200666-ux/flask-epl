@@ -24,8 +24,8 @@ class Player(db.Model):
   nationality: Mapped[str] = mapped_column(String(30), nullable=False)
   goal: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
   
-  
-  clean_sheets: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+  # แก้ไขตรงนี้: เปลี่ยน nullable=False เป็น nullable=True และเอา default=0 ออก
+  clean_sheets: Mapped[int] = mapped_column(Integer, nullable=True)
   
   squad_no: Mapped[int] = mapped_column(Integer, nullable=True)
   img: Mapped[str] = mapped_column(String(255), nullable=False)
